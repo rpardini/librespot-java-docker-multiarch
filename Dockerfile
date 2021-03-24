@@ -12,7 +12,12 @@ WORKDIR /app
 # Java version...
 RUN java -version
 
-# Allow everyone to read the jar and config, and to write the config (app writes to it during normal operations)
-RUN chmod -R ugo+r /app /config && chmod -R ugo+w /config/config.toml
+# Add user to system
+RUN useradd -ms /bin/bash app
+RUN id app
+RUN chown -R app:app /app /config
+
+# Use app user as default, avoid running as root
+USER app
 
 CMD ["java", "-jar", "/app/librespot-player.jar", "--conf-file=/config/config.toml"]
