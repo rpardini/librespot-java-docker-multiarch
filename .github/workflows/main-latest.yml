@@ -47,7 +47,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: ghcr.io/${{ secrets.DOCKER_GITHUB_USERNAME }}/${{ github.event.repository.name }}:latest,ghcr.io/${{ secrets.DOCKER_GITHUB_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
           labels: |
