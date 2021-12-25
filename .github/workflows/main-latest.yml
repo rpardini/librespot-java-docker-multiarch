@@ -1,4 +1,4 @@
-name: master-latest 
+name: master-latest
 
 on:
   push:
